@@ -1,0 +1,94 @@
+T23B8 053:415.399   SEGGER J-Link V6.86 Log File
+T23B8 053:415.590   DLL Compiled: Sep 24 2020 17:31:31
+T23B8 053:415.626   Logging started @ 2021-06-07 02:56
+T23B8 053:415.654 - 18.198ms
+T23B8 053:415.692 JLINK_SetWarnOutHandler(...)
+T23B8 053:415.720 - 0.041ms
+T23B8 053:415.752 JLINK_OpenEx(...)
+T23B8 053:427.752   Firmware: J-Link V9 compiled Dec 13 2019 11:14:50
+T23B8 053:428.370   Decompressing FW timestamp took 502 us
+T23B8 053:463.595   Hardware: V9.60
+T23B8 053:463.656   S/N: 69610002
+T23B8 053:463.677   OEM: SEGGER
+T23B8 053:463.701   Feature(s): RDI, GDB, FlashDL, FlashBP, JFlash
+T23B8 053:476.632   TELNET listener socket opened on port 19021
+T23B8 053:481.555   Device "ARM7" selected.
+T23B8 053:482.550   WEBSRV Starting webserver
+T23B8 053:482.850   WEBSRV Webserver running on local port 19080
+T23B8 053:482.872 - 67.125ms returns "O.K."
+T23B8 053:482.894 JLINK_GetEmuCaps()
+T23B8 053:482.905 - 0.017ms returns 0xB9FF7BBF
+T23B8 053:482.918 JLINK_TIF_GetAvailable(...)
+T23B8 053:485.216 - 2.306ms
+T23B8 053:485.233 JLINK_SetErrorOutHandler(...)
+T23B8 053:485.241 - 0.012ms
+T23B8 053:485.256 JLINK_ExecCommand("ProjectFile = "E:\E Electronics (E)\Robot\My Aquarium Controller\Main Board\MDK-ARM\JLinkSettings.ini"", ...). 
+T23B8 053:485.812   Device "ARM7" selected.
+T23B8 053:486.264 - 1.018ms returns 0x00
+T23B8 053:486.291 JLINK_ExecCommand("Device = STM32F030F4Px", ...). 
+T23B8 053:486.591   Device "STM32F030F4" selected.
+T23B8 053:486.964 - 0.668ms returns 0x00
+T23B8 053:486.991 JLINK_GetHardwareVersion()
+T23B8 053:486.999 - 0.013ms returns 96000
+T23B8 053:487.010 JLINK_GetDLLVersion()
+T23B8 053:487.018 - 0.012ms returns 68600
+T23B8 053:487.029 JLINK_GetOEMString(...)
+T23B8 053:487.040 JLINK_GetFirmwareString(...)
+T23B8 053:487.048 - 0.012ms
+T23B8 053:487.061 JLINK_GetDLLVersion()
+T23B8 053:487.070 - 0.012ms returns 68600
+T23B8 053:487.080 JLINK_GetCompileDateTime()
+T23B8 053:487.088 - 0.012ms
+T23B8 053:487.101 JLINK_GetFirmwareString(...)
+T23B8 053:487.110 - 0.012ms
+T23B8 053:490.366 JLINK_GetHardwareVersion()
+T23B8 053:490.381 - 0.019ms returns 96000
+T23B8 053:490.395 JLINK_GetSN()
+T23B8 053:490.406 - 0.016ms returns 69610002
+T23B8 053:490.421 JLINK_GetOEMString(...)
+T23B8 053:490.437 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T23B8 053:501.459 - 11.042ms returns 0x00
+T23B8 053:501.492 JLINK_HasError()
+T23B8 053:501.507 JLINK_SetSpeed(5000)
+T23B8 053:503.706 - 2.209ms
+T23B8 053:503.965 JLINK_HasError()
+T23B8 053:503.984 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T23B8 053:503.993 - 0.013ms returns JLINKARM_RESET_TYPE_NORMAL
+T23B8 053:504.004 JLINK_Reset()
+T23B8 054:254.099   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T23B8 054:433.112   
+  ***** Error: 
+T23B8 054:433.197   STM32: Connecting to CPU via connect under reset failed.
+T23B8 054:692.366   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T23B8 054:871.059   
+  ***** Error: 
+T23B8 054:871.158   STM32: Connecting to CPU via connect under reset failed.
+T23B8 054:923.132 - 1419.211ms
+T23B8 054:923.269 JLINK_GetId()
+T23B8 055:052.109   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T23B8 055:233.089   
+  ***** Error: 
+T23B8 055:233.204   STM32: Connecting to CPU via connect under reset failed.
+T23B8 055:486.111   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T23B8 055:666.078   
+  ***** Error: 
+T23B8 055:666.190   STM32: Connecting to CPU via connect under reset failed.
+T23B8 055:718.077 - 794.881ms returns 0x00000000
+T23B8 055:718.211 JLINK_GetId()
+T23B8 055:848.126   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T23B8 056:029.118   
+  ***** Error: 
+T23B8 056:029.222   STM32: Connecting to CPU via connect under reset failed.
+T23B8 056:282.097   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T23B8 056:463.180   
+  ***** Error: 
+T23B8 056:463.277   STM32: Connecting to CPU via connect under reset failed.
+T23B8 056:515.218 - 797.079ms returns 0x00000000
+T23B8 056:522.667 JLINK_GetFirmwareString(...)
+T23B8 056:522.902 - 0.250ms
+T0DE0 079:860.079   
+  ***** Error: Connection to emulator lost!
+T23B8 329:440.914 JLINK_Close()
+T23B8 329:450.743 - 9.855ms
+T23B8 329:450.777   
+T23B8 329:450.787   Closed
