@@ -43,10 +43,13 @@
 #define light_pwm_handle    &htim3
 #define light_pwm_channal   TIM_CHANNEL_1
 
-#define set_temp_addr  10
-//#define direction_addr  25;
-//const uint8_t direction_value=33;
-#define light_val_addr  50
+#define set_temp_addr  						10
+//#define direction_addr  				S25;
+#define light_val_addr  					50
+#define light_On_Hours						6
+
+#define light_On_Duration 				light_On_Hours * (60 * 60 / 2) //no need any changes, it calculates from light_On_Hours
+#define light_Off_Duration 				(24 * 60 * 60 / 2) - light_On_Duration //no need any changes, it calculates from light_On_Hours
 
 /* USER CODE END PD */
 
@@ -66,8 +69,9 @@ TIM_HandleTypeDef htim14;
 
 /* USER CODE BEGIN PV */
 
+//const uint8_t direction_value=33;
 
-double last_temprature=0 , set_temp=0;
+float last_temprature=0 , set_temp=0;
 uint16_t light_time=0;
 uint16_t Pump_time=0;
 uint16_t light_val=0;
@@ -111,14 +115,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	
 //***************************Light Code Begin********************************
 		light_time++;
-		if(light_time>32400 && !light_stat ){
+		if(light_time>light_Off_Duration && !light_stat ){
 			__HAL_TIM_SET_COMPARE(light_pwm_handle,light_pwm_channal,light_val);
 
 			Buzzer_Beep(beep4,50);
 			light_time=0;
 			light_stat=true;
 		}
-		else if(light_time>10800 && light_stat)
+		else if(light_time>light_On_Duration && light_stat)
 		{
 			Buzzer_Beep(beep5,50);
 			__HAL_TIM_SET_COMPARE(light_pwm_handle,light_pwm_channal,1);
@@ -172,7 +176,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 				if((last_temprature<(set_temp-0.1)) && (last_temprature>5)){
 					Heater_GPIO_Port->BSRR = (uint32_t)Heater_Pin;
 				}
-				if((last_temprature>=(set_temp)) && (last_temprature>5)){
+				if(((last_temprature>=(set_temp)) && (last_temprature>5)) || (last_temprature >= 34)){
 					Heater_GPIO_Port->BRR = (uint32_t)Heater_Pin;	
 				}
 				lcd_home();
@@ -315,6 +319,7 @@ int main(void)
 					lcd_gotoy(1);
 					lcd_dispstr("SetT=",5);
 					lcd_dispfloat(set_temp,5);
+//					lcd_dispstr("    ",4);
 				}
 				else{
 					if(light_val<1260){ 

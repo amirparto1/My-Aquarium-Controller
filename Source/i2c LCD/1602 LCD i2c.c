@@ -7,8 +7,9 @@ uint8_t backlight_stat=led_on;
 
 
 void lcd_dispfloat(float val,uint8_t size){
+	size++;
 	char str[size];
-	snprintf(str,size+1,"%f",val);
+	snprintf(str,size,"%.2f",val);
 	lcd_dispstr(str,size);
 }
 
@@ -68,7 +69,7 @@ void lcd_init(void){
 	lcd_clear();
 }
 
-void lcd_shift(enum lcd_shift shift , uint8_t n){
+void lcd_shift(lcd_shift_enum shift , uint8_t n){
 	for(uint8_t i=0;i<n;i++)
   {
 		if (shift==shift_right) lcd_send_cmd(0x1E);
@@ -120,7 +121,7 @@ void lcd_gotox(uint8_t x){
 
 
 
-void lcd_backlight(enum lcd_backlight led){
+void lcd_backlight(lcd_backlight_enum led){
 
 	backlight_stat=led;
 	HAL_I2C_Master_Transmit (&lcd_i2c_handle, 0x4E, &backlight_stat, 1, 100);
@@ -136,7 +137,7 @@ void lcd_home(void){
 	lcd_send_cmd(0x02);
 }
 
-void lcd_cursor(enum cursor_status cursor){
+void lcd_cursor(cursor_status cursor){
 	switch (cursor)
   {
   	case off:
@@ -158,10 +159,10 @@ void lcd_send_cmd (char cmd){
 	uint8_t data_t[4];
 	data_u = cmd&0xf0;    // select only upper nibble
 	data_l = (cmd<<4)&0xf0;    // select only lower nibble
-	data_t[0] = data_u|0x04|backlight_stat;  //en=1, rs=0, backlight=on
-	data_t[1] = data_u|backlight_stat;  //en=0, rs=0, backlight=on
-	data_t[2] = data_l|0x04|backlight_stat;  //en=1, rs=0, backlight=on
-	data_t[3] = data_l|backlight_stat;  //en=0, rs=0, backlight=on
+	data_t[0] = data_u|0x04|backlight_stat;  //en=1, rs=0, backlight=backlight_stat
+	data_t[1] = data_u|backlight_stat;  //en=0, rs=0, backlight=backlight_stat
+	data_t[2] = data_l|0x04|backlight_stat;  //en=1, rs=0, backlight=backlight_stat
+	data_t[3] = data_l|backlight_stat;  //en=0, rs=0, backlight=backlight_stat
 	HAL_I2C_Master_Transmit (&lcd_i2c_handle, 0x4E, (uint8_t *) data_t, 4, 100);
 	HAL_Delay(1);
 }
@@ -171,10 +172,10 @@ void lcd_send_data (char data){
 	uint8_t data_t[4];
 	data_u = data&0xf0;    // upper data nibble
 	data_l = (data<<4)&0xf0;    // lower data nibble
-	data_t[0] = data_u|0x05|backlight_stat;  //en=1, rs=1, backlight=on
-	data_t[1] = data_u|0x01|backlight_stat;  //en=0, rs=1, backlight=on
-	data_t[2] = data_l|0x05|backlight_stat;  //en=1, rs=1, backlight=on
-	data_t[3] = data_l|0x01|backlight_stat;  //en=0, rs=1, backlight=on
+	data_t[0] = data_u|0x05|backlight_stat;  //en=1, rs=1, backlight=backlight_stat
+	data_t[1] = data_u|0x01|backlight_stat;  //en=0, rs=1, backlight=backlight_stat
+	data_t[2] = data_l|0x05|backlight_stat;  //en=1, rs=1, backlight=backlight_stat
+	data_t[3] = data_l|0x01|backlight_stat;  //en=0, rs=1, backlight=backlight_stat
 	HAL_I2C_Master_Transmit (&lcd_i2c_handle, 0x4E,(uint8_t *) data_t, 4, 100);
 	HAL_Delay(1);
 }
