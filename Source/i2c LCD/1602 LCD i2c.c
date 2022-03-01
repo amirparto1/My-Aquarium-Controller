@@ -8,8 +8,9 @@ uint8_t backlight_stat=led_on;
 
 void lcd_dispfloat(float val,uint8_t size){
 	size++;
-	char str[size];
-	snprintf(str,size,"%.2f",val);
+	char str[size]; 
+	snprintf(str,size,"%f",val);
+	str[size-1] = ' ';
 	lcd_dispstr(str,size);
 }
 
